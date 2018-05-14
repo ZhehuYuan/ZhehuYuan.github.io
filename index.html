@@ -1,5 +1,195 @@
 <!DOCTYPE html>
 <html>
+        <style>
+                *, *::before, *::after {
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+                .masthead {
+                    position: relative;
+                    border-bottom: 1px solid #f2f3f3;
+                    -webkit-animation: intro 0.3s both;
+                    animation: intro 0.3s both;
+                    -webkit-animation-delay: 0.15s;
+                    animation-delay: 0.15s;
+                    z-index: 20;
+                }
+                body {
+                    margin: 0;
+                }
+                body {
+                    margin: 0;
+                    padding: 0;
+                    color: #494e52;
+                    font-family: -apple-system,".SFNSText-Regular","San Francisco","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+                    line-height: 1.5;
+                }
+                html {
+                    box-sizing: border-box;
+                    background-color: #fff;
+                    font-size: 16px;
+                    -webkit-text-size-adjust: 100%;
+                    -ms-text-size-adjust: 100%;
+                }
+                /* @media all and (min-width:48em) */
+                html {
+                    font-size: 18px;
+                }
+                .masthead__inner-wrap {
+                    max-width: 925px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    clear: both;
+                    padding: 1em 1em 1em;
+                    font-family: -apple-system,".SFNSText-Regular","San Francisco","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+                }
+                /* @media all and (min-width:80em) */
+                .masthead__inner-wrap {
+                    max-width: 1280px;
+                }
+                article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
+                    display: block;
+                }
+                .greedy-nav {
+                    position: relative;
+                    min-width: 250px;
+                    background: #fff;
+                }
+                .masthead__inner-wrap nav {
+                    z-index: 10;
+                }
+                button, input, select, textarea {
+                    margin: 0;
+                    font-size: 100%;
+                    vertical-align: middle;
+                }
+                button, input {
+                    *overflow:visible: ;
+                    line-height: normal;
+                }
+                button, html input[type='button'], input[type='reset'], input[type='submit'] {
+                    -webkit-appearance: button;
+                    cursor: pointer;
+                }
+                label, select, button, input[type='button'], input[type='reset'], input[type='submit'], input[type='radio'], input[type='checkbox'] {
+                    cursor: pointer;
+                }
+                label, input, button, select, textarea {
+                    vertical-align: baseline;
+                    *vertical-align:middle: ;
+                }
+                input, button, select, textarea {
+                    box-sizing: border-box;
+                    font-family: -apple-system,".SFNSText-Regular","San Francisco","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+                }
+                nav ul {
+                    margin: 0;
+                    padding: 0;
+                }
+                .hidden {
+                    display: none;
+                    visibility: hidden;
+                }
+                .greedy-nav button {
+                    position: absolute;
+                    height: 100%;
+                    right: 0px;
+                    padding: 0 0.5rem;
+                    border: 0;
+                    outline: none;
+                    background-color: #7a8288;
+                    color: #fff;
+                    cursor: pointer;
+                }
+                p, pre, blockquote, ul, ol, dl, figure, table, fieldset {
+                    orphans: 3;
+                    widows: 3;
+                }
+                .masthead__menu ul {
+                    margin: 0;
+                    padding: 0;
+                    clear: both;
+                    list-style-type: none;
+                }
+                .greedy-nav .visible-links {
+                    display: table;
+                }
+                .greedy-nav .hidden-links {
+                    position: absolute;
+                    top: 100%;
+                    right: 0px;
+                    margin-top: 15px;
+                    padding: 5px;
+                    border: 1px solid #f2f3f3;
+                    border-radius: 4px;
+                    background: #fff;
+                    box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+                }
+                ul li, ol li {
+                    margin-bottom: 0.5em;
+                }
+                nav li {
+                    list-style: none;
+                }
+                nav ul li, nav ol li {
+                    margin-bottom: 0px;
+                }
+                .masthead__menu-item {
+                    display: block;
+                    list-style-type: none;
+                    white-space: nowrap;
+                }
+                .masthead__menu-item--lg {
+                    padding-right: 2em;
+                    font-weight: 700;
+                }
+                .greedy-nav .visible-links li {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+                .greedy-nav .visible-links li:first-child {
+                    font-weight: bold;
+                }
+                a {
+                    color: #52adc8;
+                }
+                b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, tr, td, form button, input[type='submit'], .btn, #goog-wm-sb, .highlight, .archive__item-teaser {
+                    -webkit-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
+                }
+                nav a {
+                    text-decoration: none;
+                }
+                .masthead__inner-wrap a {
+                    text-decoration: none;
+                }
+                .greedy-nav a {
+                    display: block;
+                    margin: 0 1rem;
+                    padding: 0.5rem 0;
+                    color: #7a8288;
+                    text-decoration: none;
+                }
+                .greedy-nav .visible-links a {
+                    position: relative;
+                }
+                .greedy-nav .visible-links li:last-child a {
+                    margin-right: 0px;
+                }
+                .greedy-nav .visible-links li:first-child a {
+                    margin-left: 0px;
+                }
+                .navicon {
+                    position: relative;
+                    width: 28px;
+                    height: 4px;
+                    background: #fff;
+                    margin: auto;
+                    -webkit-transition: 0.3s;
+                    transition: 0.3s;
+                }
+                </style>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>
@@ -10,6 +200,26 @@
         <meta content="About me" property="og:title">   
     </head>
     <body>
+        <div class="masthead">
+            <div class="masthead__inner-wrap">
+                <div class="masthead__menu">
+                    <nav class="greedy-nav" id="site-nav"> 
+                        <button class="hidden" count="0">
+                            <div class="navicon">
+                            </div>
+                        </button>
+                        <ul class="visible-links">
+                            <li class="masthead__menu-item masthead__menu-item--lg">
+                                <a href="https://zhehuyuan.github.io/">Zhehu Yuan (袁喆虎)</a>
+                            </li>
+                        </ul>
+                        <ul class="hidden-links hidden">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
         <h1 class="page__title" itemprop="headline">
             About me
         </h1>
