@@ -1,294 +1,545 @@
-<!DOCTYPE html>
-<html>
-        <style>
-                *, *::before, *::after {
-                    -moz-box-sizing: border-box;
-                    -webkit-box-sizing: border-box;
-                    box-sizing: border-box;
-                }
-                .masthead {
-                    position: relative;
-                    border-bottom: 1px solid #f2f3f3;
-                    -webkit-animation: intro 0.3s both;
-                    animation: intro 0.3s both;
-                    -webkit-animation-delay: 0.15s;
-                    animation-delay: 0.15s;
-                    z-index: 20;
-                }
-                body {
-                    margin: 0;
-                }
-                body {
-                    margin: 0;
-                    padding: 0;
-                    color: #494e52;
-                    font-family: -apple-system,".SFNSText-Regular","San Francisco","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-                    line-height: 1.5;
-                }
-                html {
-                    box-sizing: border-box;
-                    background-color: #fff;
-                    font-size: 16px;
-                    -webkit-text-size-adjust: 100%;
-                    -ms-text-size-adjust: 100%;
-                }
-                /* @media all and (min-width:48em) */
-                html {
-                    font-size: 18px;
-                }
-                .masthead__inner-wrap {
-                    max-width: 925px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    clear: both;
-                    padding: 1em 1em 1em;
-                    font-family: -apple-system,".SFNSText-Regular","San Francisco","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-                }
-                /* @media all and (min-width:80em) */
-                .masthead__inner-wrap {
-                    max-width: 1280px;
-                }
-                article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
-                    display: block;
-                }
-                .greedy-nav {
-                    position: relative;
-                    min-width: 250px;
-                    background: #fff;
-                }
-                .masthead__inner-wrap nav {
-                    z-index: 10;
-                }
-                button, input, select, textarea {
-                    margin: 0;
-                    font-size: 100%;
-                    vertical-align: middle;
-                }
-                button, input {
-                    *overflow:visible: ;
-                    line-height: normal;
-                }
-                button, html input[type='button'], input[type='reset'], input[type='submit'] {
-                    -webkit-appearance: button;
-                    cursor: pointer;
-                }
-                label, select, button, input[type='button'], input[type='reset'], input[type='submit'], input[type='radio'], input[type='checkbox'] {
-                    cursor: pointer;
-                }
-                label, input, button, select, textarea {
-                    vertical-align: baseline;
-                    *vertical-align:middle: ;
-                }
-                input, button, select, textarea {
-                    box-sizing: border-box;
-                    font-family: -apple-system,".SFNSText-Regular","San Francisco","Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-                }
-                nav ul {
-                    margin: 0;
-                    padding: 0;
-                }
-                .hidden {
-                    display: none;
-                    visibility: hidden;
-                }
-                .greedy-nav button {
-                    position: absolute;
-                    height: 100%;
-                    right: 0px;
-                    padding: 0 0.5rem;
-                    border: 0;
-                    outline: none;
-                    background-color: #7a8288;
-                    color: #fff;
-                    cursor: pointer;
-                }
-                p, pre, blockquote, ul, ol, dl, figure, table, fieldset {
-                    orphans: 3;
-                    widows: 3;
-                }
-                .masthead__menu ul {
-                    margin: 0;
-                    padding: 0;
-                    clear: both;
-                    list-style-type: none;
-                }
-                .greedy-nav .visible-links {
-                    display: table;
-                }
-                .greedy-nav .hidden-links {
-                    position: absolute;
-                    top: 100%;
-                    right: 0px;
-                    margin-top: 15px;
-                    padding: 5px;
-                    border: 1px solid #f2f3f3;
-                    border-radius: 4px;
-                    background: #fff;
-                    box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
-                }
-                ul li, ol li {
-                    margin-bottom: 0.5em;
-                }
-                nav li {
-                    list-style: none;
-                }
-                nav ul li, nav ol li {
-                    margin-bottom: 0px;
-                }
-                .masthead__menu-item {
-                    display: block;
-                    list-style-type: none;
-                    white-space: nowrap;
-                }
-                .masthead__menu-item--lg {
-                    padding-right: 2em;
-                    font-weight: 700;
-                }
-                .greedy-nav .visible-links li {
-                    display: table-cell;
-                    vertical-align: middle;
-                }
-                .greedy-nav .visible-links li:first-child {
-                    font-weight: bold;
-                }
-                a {
-                    color: #52adc8;
-                }
-                b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, tr, td, form button, input[type='submit'], .btn, #goog-wm-sb, .highlight, .archive__item-teaser {
-                    -webkit-transition: all 0.2s ease-in-out;
-                    transition: all 0.2s ease-in-out;
-                }
-                nav a {
-                    text-decoration: none;
-                }
-                .masthead__inner-wrap a {
-                    text-decoration: none;
-                }
-                .greedy-nav a {
-                    display: block;
-                    margin: 0 1rem;
-                    padding: 0.5rem 0;
-                    color: #7a8288;
-                    text-decoration: none;
-                }
-                .greedy-nav .visible-links a {
-                    position: relative;
-                }
-                .greedy-nav .visible-links li:last-child a {
-                    margin-right: 0px;
-                }
-                .greedy-nav .visible-links li:first-child a {
-                    margin-left: 0px;
-                }
-                .navicon {
-                    position: relative;
-                    width: 28px;
-                    height: 4px;
-                    background: #fff;
-                    margin: auto;
-                    -webkit-transition: 0.3s;
-                    transition: 0.3s;
-                }
-        </style>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>
-            Zhehu Yuan (袁喆虎)
-        </title>
-        <meta content="en-US.UTF-8" property="og:locale">
-        <meta content="Zhehu Yuan (袁喆虎)" property="og:site_name">
-        <meta content="About me" property="og:title">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script> 
-            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js '; 
-        </script>
-        <link href="https://likai1993.github.io/images/apple-touch-icon-57x57.png?v=M44lzPylqQ" rel="apple-touch-icon" sizes="57x57">
-    </head>
-    <body>
-        <div class="masthead">
-            <div class="masthead__inner-wrap">
-                <div class="masthead__menu">
-                    <nav class="greedy-nav" id="site-nav"> 
-                        <button class="hidden" count="0">
-                            <div class="navicon">
-                            </div>
-                        </button>
-                        <ul class="visible-links">
-                            <li class="masthead__menu-item masthead__menu-item--lg">
-                                <a href="https://zhehuyuan.github.io/">Zhehu Yuan (袁喆虎)</a>
-                            </li>
-                        </ul>
-                        <ul class="hidden-links hidden">
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <table width="100%" bordercolor="#111111" style="border-collapse: collapse" border="0" cellspacing="3" cellpadding="0">
-            <tbody>
-                <td width="184" height="326">
-                    <img width="184" height="326" align="left" src="https://zhehuyuan.github.io/IMG_20171230_231729.jpg" border="0" vspace="1" hspace="1" />
-                </td>
-                <td width="10"></td>
-                <td>
-                    <div id = "main" role = "main">
-                    <div class="sidebar sticky">
-                    <div itemtype="http://schema.org/Person" itemscope="">
-                        <div class="author__content">
-                            <h3 class="author__name">
-                                Zhehu Yuan
-                            </h3>
-                            <p class="author__bio">
-                                Junior of Computer Science major and Economic minor at Syracuse University
-                            </p>
-                        </div>
-                        <div class="author__urls-wrapper"> 
-                            <ul class="author__urls social-icons">
-                                <li>
-                                    <a href="mailto:zyuan04@syr.edu">
-                                        <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> 
-                                        Email
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/ZhehuYuan/ZhehuYuan.github.io">
-                                        <i class="fa fa-fw fa-github" aria-hidden="true"></i> 
-                                        Github
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-            </div>
-            <article class="page" itemtype="http://schema.org/CreativeWork" itemscope="">
-            <meta content="About me" itemprop="headline">
-            <meta content="About me" itemprop="description">
-            <div class="page__inner-wrap">
-                <header>
-                    <h1 class="page__title" itemprop="headline">About me</h1>
-                </header>
-                <section class="page__content" itemprop="text">
-                    <p></p>
-                    <p></p>
-                    <p>
-                        I'm a current junior student in 
-                        <a href="http://coursecatalog.syr.edu/preview_program.php?catoid=3&poid=1011">Computer Science major</a>
-                         and 
-                        <a href="http://coursecatalog.syr.edu/preview_program.php?catoid=3&poid=839&returnto=255">Economic minor</a>
-                         at syracuse university. 
-                        Now, I'm helping Professor 
-                        <a href="http://tristartom.github.io/">Yuzhe Tang</a>
-                         with security and blockchain related project.
-                    </p>
-                </section>
-                <footer class="page__meta"></footer>
-            </div>
-            </article>
-                    </div>
-                </td>
-            </tbody>
-        </table>
-    </body>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>刘津扬生日快乐 🎂</title>
+  <meta name="description" content="祝刘津扬生日快乐的祝福网页" />
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#2b1450;
+      --card:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.18);
+      --text:#f7f7fb;
+      --muted:rgba(247,247,251,.75);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 800px at 20% 20%, rgba(255,120,220,.22), transparent 55%),
+        radial-gradient(900px 700px at 80% 30%, rgba(120,180,255,.18), transparent 55%),
+        radial-gradient(1000px 900px at 40% 90%, rgba(255,210,120,.12), transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+    }
+
+    /* subtle stars */
+    .stars{
+      position:fixed; inset:0;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,.35), transparent 55%),
+        radial-gradient(1px 1px at 140px 90px, rgba(255,255,255,.35), transparent 55%),
+        radial-gradient(1.5px 1.5px at 300px 200px, rgba(255,255,255,.25), transparent 55%),
+        radial-gradient(1px 1px at 60px 220px, rgba(255,255,255,.25), transparent 55%),
+        radial-gradient(2px 2px at 420px 120px, rgba(255,255,255,.18), transparent 55%),
+        radial-gradient(1px 1px at 520px 260px, rgba(255,255,255,.22), transparent 55%);
+      background-size: 600px 320px;
+      opacity:.55;
+      animation: twinkle 6s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+    @keyframes twinkle { from{opacity:.40} to{opacity:.70} }
+
+    .wrap{
+      position:relative;
+      height:100%;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+
+    .card{
+      width:min(880px, 100%);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.35);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 200px at 20% 0%, rgba(255,255,255,.18), transparent 60%);
+      pointer-events:none;
+    }
+
+    header{
+      padding:26px 26px 0 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.12);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      user-select:none;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.1));
+      box-shadow: 0 0 18px rgba(255,255,255,.35);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse{ 0%,100%{transform:scale(.9); opacity:.7} 50%{transform:scale(1.2); opacity:1} }
+
+    main{
+      padding: 10px 26px 26px 26px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+    }
+    @media (max-width: 820px){
+      main{grid-template-columns: 1fr; }
+    }
+
+    h1{
+      margin: 10px 0 6px 0;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: .5px;
+    }
+    .gradient-text{
+      background: linear-gradient(90deg, #ffdb7a, #ff7bd1, #7ad6ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow: 0 0 30px rgba(255,255,255,.05);
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+      margin: 0 0 14px 0;
+    }
+
+    .type{
+      font-size: 18px;
+      line-height: 1.75;
+      margin-top: 10px;
+      color: rgba(255,255,255,.92);
+      min-height: 3.5em;
+    }
+    .cursor{
+      display:inline-block;
+      width: 10px;
+      margin-left: 2px;
+      border-right: 2px solid rgba(255,255,255,.75);
+      animation: blink .9s steps(2) infinite;
+      transform: translateY(1px);
+    }
+    @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      border-radius: 18px;
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .panel h2{
+      margin:0 0 10px 0;
+      font-size: 15px;
+      color: rgba(255,255,255,.85);
+      font-weight: 650;
+      letter-spacing:.2px;
+    }
+    .wish{
+      margin:0;
+      color: rgba(255,255,255,.82);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    button{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      font-size:14px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    button:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.26); }
+    button:active{ transform: translateY(0); }
+
+    .small{
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      margin-top:10px;
+    }
+
+    /* floating balloons */
+    .balloon{
+      position:absolute;
+      width: 54px; height: 70px;
+      border-radius: 50% 50% 48% 48%;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.35));
+      opacity:.95;
+      animation: floatUp linear infinite;
+      pointer-events:none;
+    }
+    .balloon::after{
+      content:"";
+      position:absolute;
+      left:50%; top:68px;
+      width:2px; height: 70px;
+      background: rgba(255,255,255,.35);
+      transform: translateX(-50%);
+    }
+    @keyframes floatUp{
+      from{ transform: translateY(110vh) translateX(0) rotate(-2deg); }
+      to{ transform: translateY(-140px) translateX(40px) rotate(2deg); }
+    }
+
+    /* confetti canvas */
+    canvas{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+    }
+
+    /* cake */
+    .cake{
+      margin-top:12px;
+      display:grid;
+      place-items:center;
+      padding: 10px 0 0 0;
+    }
+    .cake svg{
+      width:min(300px, 80%);
+      opacity:.95;
+    }
+    .flame{
+      transform-origin: center;
+      animation: flame 1.2s ease-in-out infinite;
+    }
+    @keyframes flame{
+      0%,100%{ transform: translateY(0) scale(1); opacity: .85; }
+      50%{ transform: translateY(-2px) scale(1.05); opacity: 1; }
+    }
+
+    footer{
+      padding: 0 26px 22px 26px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .link{
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,.35);
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <canvas id="confetti"></canvas>
+
+  <!-- balloons (generated by JS too, but add a couple for instant feel) -->
+  <div id="balloons"></div>
+
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div class="badge"><span class="dot"></span> 生日祝福页面 · Happy Birthday</div>
+        <div class="badge" id="today"></div>
+      </header>
+
+      <main>
+        <section>
+          <h1 class="gradient-text">刘津扬，生日快乐！🎉</h1>
+          <p class="subtitle">
+            愿你新的一岁：<b>每天都有好心情</b>，目标稳步推进，生活里总有小惊喜。
+            也愿你想要的都慢慢靠近，努力的都不被辜负。
+          </p>
+
+          <div class="type" id="type"></div>
+
+          <div class="btns">
+            <button id="pop">🎊 再来一波彩带</button>
+            <button id="toggleMusic">🔈 播放/暂停生日歌</button>
+            <button id="copy">📋 复制祝福语</button>
+          </div>
+          <div class="small">提示：如果手机静音/系统限制，音乐可能需要点一次按钮才能播放。</div>
+        </section>
+
+        <aside class="panel">
+          <h2>今日愿望清单</h2>
+          <p class="wish">
+            ✅ 吃到喜欢的蛋糕<br/>
+            ✅ 收到喜欢的礼物<br/>
+            ✅ 和喜欢的人一起开心<br/>
+            ✅ 今年的每个小目标都能实现<br/>
+            ✅ 睡个好觉、做个好梦
+          </p>
+
+          <div class="cake" aria-hidden="true">
+            <!-- simple cake svg -->
+            <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M84 110h152c8 0 14 6 14 14v90c0 12-10 22-22 22H92c-12 0-22-10-22-22v-90c0-8 6-14 14-14Z" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)"/>
+              <path d="M70 150h180" stroke="rgba(255,255,255,.22)"/>
+              <path d="M70 190h180" stroke="rgba(255,255,255,.18)"/>
+              <path d="M110 110c0-22 18-40 50-40s50 18 50 40" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.2)"/>
+              <rect x="150" y="40" width="20" height="55" rx="10" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.22)"/>
+              <path class="flame" d="M160 18c10 10 10 20 0 30-10-10-10-20 0-30Z" fill="rgba(255,215,120,.95)"/>
+              <path class="flame" d="M160 22c7 7 7 14 0 21-7-7-7-14 0-21Z" fill="rgba(255,120,220,.65)"/>
+              <circle cx="120" cy="150" r="6" fill="rgba(255,123,209,.75)"/>
+              <circle cx="160" cy="150" r="6" fill="rgba(122,214,255,.75)"/>
+              <circle cx="200" cy="150" r="6" fill="rgba(255,219,122,.75)"/>
+              <circle cx="140" cy="190" r="6" fill="rgba(122,214,255,.65)"/>
+              <circle cx="180" cy="190" r="6" fill="rgba(255,219,122,.65)"/>
+            </svg>
+          </div>
+        </aside>
+      </main>
+
+      <footer>
+        <span>🎂 Made with ❤️ for 刘津扬</span>
+        <span>想改成你自己的文案/配色？直接改 HTML 文本即可。</span>
+      </footer>
+    </div>
+  </div>
+
+  <audio id="music" preload="auto">
+    <!-- public-domain-ish simple melody via oscillator fallback; this audio is optional -->
+  </audio>
+
+  <script>
+    // ---- date badge
+    const todayEl = document.getElementById('today');
+    const d = new Date();
+    const fmt = new Intl.DateTimeFormat('zh-CN', { year:'numeric', month:'2-digit', day:'2-digit', weekday:'short' });
+    todayEl.textContent = fmt.format(d);
+
+    // ---- typewriter
+    const lines = [
+      "愿你被世界温柔以待，",
+      "愿你热爱依旧、山海可平，",
+      "愿你所有期待都如约而至。",
+      "刘津扬，生日快乐！🥳"
+    ];
+    const typeEl = document.getElementById('type');
+    let li=0, ci=0, deleting=false;
+
+    function tick(){
+      const current = lines[li];
+      if(!deleting){
+        ci++;
+        typeEl.innerHTML = current.slice(0,ci) + '<span class="cursor"></span>';
+        if(ci >= current.length){
+          deleting = true;
+          setTimeout(tick, 900);
+          return;
+        }
+      }else{
+        ci--;
+        typeEl.innerHTML = current.slice(0,ci) + '<span class="cursor"></span>';
+        if(ci <= 0){
+          deleting = false;
+          li = (li + 1) % lines.length;
+        }
+      }
+      setTimeout(tick, deleting ? 40 : 55);
+    }
+    tick();
+
+    // ---- balloons
+    const balloonsEl = document.getElementById('balloons');
+    const colors = [
+      'linear-gradient(180deg, rgba(255,219,122,.95), rgba(255,219,122,.45))',
+      'linear-gradient(180deg, rgba(255,123,209,.95), rgba(255,123,209,.45))',
+      'linear-gradient(180deg, rgba(122,214,255,.95), rgba(122,214,255,.45))',
+      'linear-gradient(180deg, rgba(180,255,190,.85), rgba(180,255,190,.40))'
+    ];
+    function spawnBalloon(){
+      const b = document.createElement('div');
+      b.className = 'balloon';
+      b.style.left = Math.random()*100 + 'vw';
+      b.style.animationDuration = (10 + Math.random()*10) + 's';
+      b.style.background = colors[(Math.random()*colors.length)|0];
+      b.style.transform = `translateY(110vh) translateX(${(Math.random()*40-20)|0}px)`;
+      b.style.opacity = (0.75 + Math.random()*0.25).toFixed(2);
+      b.style.scale = (0.8 + Math.random()*0.6).toFixed(2);
+      balloonsEl.appendChild(b);
+      setTimeout(()=> b.remove(), 22000);
+    }
+    for(let i=0;i<10;i++) setTimeout(spawnBalloon, i*450);
+    setInterval(spawnBalloon, 900);
+
+    // ---- confetti (canvas)
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let W,H;
+    function resize(){
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const confetti = [];
+    function burst(n=180){
+      const originX = W*0.5, originY = H*0.25;
+      for(let i=0;i<n;i++){
+        confetti.push({
+          x: originX,
+          y: originY,
+          vx: (Math.random()*2-1) * (6 + Math.random()*10),
+          vy: (Math.random()*-1) * (10 + Math.random()*14),
+          g: 0.35 + Math.random()*0.18,
+          w: 6 + Math.random()*10,
+          h: 4 + Math.random()*8,
+          r: Math.random()*Math.PI,
+          vr: (Math.random()*2-1)*0.2,
+          life: 220 + Math.random()*120,
+          c: colors[(Math.random()*colors.length)|0],
+          o: 1
+        });
+      }
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(let i=confetti.length-1;i>=0;i--){
+        const p = confetti[i];
+        p.vy += p.g;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.r += p.vr;
+        p.life -= 1;
+        if(p.life < 40) p.o = p.life/40;
+
+        // create a solid-ish color from gradient name by mapping
+        let fill = 'rgba(255,255,255,.8)';
+        if(p.c.includes('255,219,122')) fill = `rgba(255,219,122,${p.o})`;
+        if(p.c.includes('255,123,209')) fill = `rgba(255,123,209,${p.o})`;
+        if(p.c.includes('122,214,255')) fill = `rgba(122,214,255,${p.o})`;
+        if(p.c.includes('180,255,190')) fill = `rgba(180,255,190,${p.o})`;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.r);
+        ctx.fillStyle = fill;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+
+        if(p.y > H + 200 || p.life <= 0) confetti.splice(i,1);
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+    // initial burst
+    setTimeout(()=>burst(220), 350);
+
+    document.getElementById('pop').addEventListener('click', ()=>burst(220));
+
+    // ---- copy wish
+    document.getElementById('copy').addEventListener('click', async ()=>{
+      const msg = "刘津扬，生日快乐！愿你新的一岁平安顺遂、心想事成，每天都有小惊喜！🎂🎉";
+      try{
+        await navigator.clipboard.writeText(msg);
+        alert("已复制祝福语：\n" + msg);
+      }catch(e){
+        prompt("复制失败（系统限制），请手动复制：", msg);
+      }
+    });
+
+    // ---- simple birthday tune via WebAudio (no external files)
+    const btnMusic = document.getElementById('toggleMusic');
+    let audioCtx=null, playing=false, timer=null;
+    function playTune(){
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const ctxA = audioCtx;
+
+      const notes = [
+        // Happy Birthday (approx) in Hz
+        [264, 0.35],[264,0.2],[297,0.55],[264,0.55],[352,0.55],[330,1.0],
+        [264, 0.35],[264,0.2],[297,0.55],[264,0.55],[396,0.55],[352,1.0],
+        [264, 0.35],[264,0.2],[528,0.55],[440,0.55],[352,0.55],[330,0.55],[297,1.0],
+        [466, 0.35],[466,0.2],[440,0.55],[352,0.55],[396,0.55],[352,1.2]
+      ];
+
+      let t = ctxA.currentTime + 0.05;
+      const gain = ctxA.createGain();
+      gain.gain.value = 0.06;
+      gain.connect(ctxA.destination);
+
+      const oscillators = [];
+      for(const [freq,dur] of notes){
+        const o = ctxA.createOscillator();
+        o.type = 'sine';
+        o.frequency.setValueAtTime(freq, t);
+        o.connect(gain);
+        o.start(t);
+        o.stop(t + dur);
+        oscillators.push(o);
+        t += dur;
+      }
+      // cleanup
+      timer = setTimeout(()=>{ playing=false; btnMusic.textContent="🔈 播放/暂停生日歌"; }, (t - ctxA.currentTime)*1000 + 100);
+    }
+
+    function stopTune(){
+      // WebAudio oscillators can't be globally stopped easily without tracking;
+      // simplest: close context (works fine for this lightweight page).
+      if(audioCtx){
+        audioCtx.close();
+        audioCtx = null;
+      }
+      if(timer) clearTimeout(timer);
+      playing=false;
+    }
+
+    btnMusic.addEventListener('click', async ()=>{
+      if(!playing){
+        playing=true;
+        btnMusic.textContent="⏸️ 暂停生日歌";
+        try{
+          // some browsers require resume
+          if(audioCtx && audioCtx.state === 'suspended') await audioCtx.resume();
+          playTune();
+        }catch(e){
+          alert("当前浏览器限制播放音频。你可以试试切换浏览器或再次点击。");
+          playing=false;
+          btnMusic.textContent="🔈 播放/暂停生日歌";
+        }
+      }else{
+        stopTune();
+        btnMusic.textContent="🔈 播放/暂停生日歌";
+      }
+    });
+  </script>
+</body>
 </html>
