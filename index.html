@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>刘津扬生日快乐 🎂</title>
-  <meta name="description" content="祝刘津扬生日快乐的祝福网页" />
+  <meta name="description" content="祝刘津扬生日快乐" />
   <style>
     :root{
       --bg1:#0b1020;
@@ -273,7 +273,7 @@
   <div class="wrap">
     <div class="card">
       <header>
-        <div class="badge"><span class="dot"></span> 生日祝福页面 · Happy Birthday</div>
+        <div class="badge"><span class="dot"></span> 生日祝福 · Happy Birthday</div>
         <div class="badge" id="today"></div>
       </header>
 
@@ -281,18 +281,15 @@
         <section>
           <h1 class="gradient-text">刘津扬，生日快乐！🎉</h1>
           <p class="subtitle">
-            愿你新的一岁：<b>每天都有好心情</b>，目标稳步推进，生活里总有小惊喜。
-            也愿你想要的都慢慢靠近，努力的都不被辜负。
+            愿你新的一岁：<b>每天都有好心情，每天都有小猫咪撸~</b>
           </p>
 
           <div class="type" id="type"></div>
 
           <div class="btns">
-            <button id="pop">🎊 再来一波彩带</button>
-            <button id="toggleMusic">🔈 播放/暂停生日歌</button>
-            <button id="copy">📋 复制祝福语</button>
+            <button id="pop">🎊 彩带</button>
+            <button id="toggleMusic">🔈 生日歌</button>
           </div>
-          <div class="small">提示：如果手机静音/系统限制，音乐可能需要点一次按钮才能播放。</div>
         </section>
 
         <aside class="panel">
@@ -326,8 +323,7 @@
       </main>
 
       <footer>
-        <span>🎂 Made with ❤️ for 刘津扬</span>
-        <span>想改成你自己的文案/配色？直接改 HTML 文本即可。</span>
+        <span>🎂 Made by 袁喆虎 with ❤️ for 刘津扬</span>
       </footer>
     </div>
   </div>
@@ -345,9 +341,6 @@
 
     // ---- typewriter
     const lines = [
-      "愿你被世界温柔以待，",
-      "愿你热爱依旧、山海可平，",
-      "愿你所有期待都如约而至。",
       "刘津扬，生日快乐！🥳"
     ];
     const typeEl = document.getElementById('type');
@@ -465,17 +458,6 @@
 
     document.getElementById('pop').addEventListener('click', ()=>burst(220));
 
-    // ---- copy wish
-    document.getElementById('copy').addEventListener('click', async ()=>{
-      const msg = "刘津扬，生日快乐！愿你新的一岁平安顺遂、心想事成，每天都有小惊喜！🎂🎉";
-      try{
-        await navigator.clipboard.writeText(msg);
-        alert("已复制祝福语：\n" + msg);
-      }catch(e){
-        prompt("复制失败（系统限制），请手动复制：", msg);
-      }
-    });
-
     // ---- simple birthday tune via WebAudio (no external files)
     const btnMusic = document.getElementById('toggleMusic');
     let audioCtx=null, playing=false, timer=null;
@@ -508,7 +490,7 @@
         t += dur;
       }
       // cleanup
-      timer = setTimeout(()=>{ playing=false; btnMusic.textContent="🔈 播放/暂停生日歌"; }, (t - ctxA.currentTime)*1000 + 100);
+      timer = setTimeout(()=>{ playing=false; btnMusic.textContent="🔈 生日歌"; }, (t - ctxA.currentTime)*1000 + 100);
     }
 
     function stopTune(){
@@ -533,11 +515,11 @@
         }catch(e){
           alert("当前浏览器限制播放音频。你可以试试切换浏览器或再次点击。");
           playing=false;
-          btnMusic.textContent="🔈 播放/暂停生日歌";
+          btnMusic.textContent="🔈 生日歌";
         }
       }else{
         stopTune();
-        btnMusic.textContent="🔈 播放/暂停生日歌";
+        btnMusic.textContent="🔈 生日歌";
       }
     });
   </script>
